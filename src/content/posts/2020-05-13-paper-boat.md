@@ -4,6 +4,7 @@ title: Character design
 slug: /character-design
 date: 2020-05-23 23:40
 description: How to draw a character
+tags: ["javascript"]
 featuredImage: /assets/andrew-seaman-4fi_4q6_efm-unsplash.jpg
 ---
 In visual arts, a model sheet, also known as a character board, character sheet, character study or simply a study, is a document used to help standardize the appearance, poses, and gestures of a character in arts such as animation, comics, and video games.
@@ -29,3 +30,24 @@ Why am I sticky and naked? Did I miss something fun? We're also Santa Claus! Soo
 Who said that? SURE you can die! You want to die?! Aww, it's true. I've been hiding it for so long. I videotape every customer that comes in here, so that I may blackmail them later. Ah, computer dating. It's like pimping, but you rarely have to use the phrase "upside your head."
 
 Spare me your space age technobabble, Attila the Hun! We'll go deliver this crate like professionals, and then we'll go home. Aww, it's true. I've been hiding it for so long. Moving along… Please, Don-Bot… look into your hard drive, and open your mercy file!
+
+```js
+copy: {
+  dist: {
+    files: [
+      {
+        expand: true,
+        cwd: 'dev/',
+        src: [
+          '**',
+          '*.{md,txt,htaccess}',
+          '!assets/css/less/**',
+          '!assets/js/site/**'
+        ],
+        dest: 'dist/',
+        dot: true
+      }
+    ]
+  }
+},
+```

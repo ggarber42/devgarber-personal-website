@@ -1,15 +1,17 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
-import Logo from "./logo"
-import Navigation from "./navigation";
+import Header from "../Header"
+import Logo from "../logo"
+import Navigation from "../navigation"
 
-import "../assets/scss/style.scss"
-import Footer from "./footer";
+// import "../assets/scss/style.scss"
+import Footer from "../Footer"
+import GlobalStyles from "../../styles/global"
+
 
 const query = graphql`
-query LayoutQuery {
+query  LayoutQuery {
   site {
     siteMetadata {
       siteTitle: title
@@ -25,6 +27,7 @@ const Layout = ({children, className}) => {
 
   return (
     <div className="primary-container">
+      <GlobalStyles />
       <Header>
         <Logo title={siteTitle} />
         <Navigation/>
