@@ -87,6 +87,7 @@ export const VerticalNav = styled.nav`
     padding: 1em 0 0;
     li{
       transition: all 100ms ease;
+      margin: .5em 0;
       &:hover{
         background: var(--clr-accent);
         color: var(--clr-dark);

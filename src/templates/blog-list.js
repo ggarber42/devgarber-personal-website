@@ -1,111 +1,85 @@
-import React from "react"
-import { Link , graphql } from "gatsby"
-import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri"
+import React, { useState } from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
-import Layout from "../components/Layout"
-import PostCard from "../components/post-card"
 import SEO from "../components/seo"
+import Layout from "../components/Layout"
+import PostCard from "../components/PostCard"
+import { InputSearch, PostList, Heading } from "../styles/utils"
+import * as V from "../styles/variables"
 
-export const blogListQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { template: { eq: "blog-post" } } }
-      limit: $limit
-      skip: $skip
-		) {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            slug
-						title
-						featuredImage {
-							childImageSharp {
-								fluid(maxWidth: 540, maxHeight: 360, quality: 80) {
-                  ...GatsbyImageSharpFluid
-                  ...GatsbyImageSharpFluidLimitPresentationSize
-                }
-							}
-						}
+const BlogIndex = () => {
+
+  const postQuery = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        filter: { frontmatter: { template: { eq: "blog-post" } } }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              date(locale: "pt-br", formatString: "DD/MM/YYYY")
+              slug
+              title
+              tags
+              description
+            }
           }
         }
       }
     }
-  }
-`
-const Pagination = (props) => (
-  <div className="pagination">
-    <ul>
-      {!props.isFirst && (
-        <li>
-          <Link to={props.prevPage} rel="prev">
-          <span className="icon -left"><RiArrowLeftLine/></span> Previous
-          </Link>
-        </li>
-      )}
-      {Array.from({ length: props.numPages }, (_, i) => (
-        <li key={`pagination-number${i + 1}`} >
-          <Link
-            to={`${props.blogSlug}${i === 0 ? '' : i + 1}`}
-            className={props.currentPage === i + 1 ? "is-active num" : "num"}
-          >
-            {i + 1}
-          </Link>
-        </li>
-      ))}
-      {!props.isLast && (
-        <li>
-          <Link to={props.nextPage} rel="next">
-            Next <span className="icon -right"><RiArrowRightLine/></span>
-          </Link>
-        </li>
-      )}
-    </ul>
-  </div>
-)
-class BlogIndex extends React.Component {
-  render() {
-    
-    const { data } = this.props
-    const { currentPage, numPages } = this.props.pageContext
-    const blogSlug = '/blog/' 
-    const isFirst = currentPage === 1
-    const isLast = currentPage === numPages
-    const prevPage = currentPage - 1 === 1 ? blogSlug : blogSlug + (currentPage - 1).toString()
-    const nextPage = blogSlug + (currentPage + 1).toString()
+  `);
 
-    const posts = data.allMarkdownRemark.edges
-      .filter(edge => !!edge.node.frontmatter.date)
-      .map(edge =>
-        <PostCard key={edge.node.id} data={edge.node} />
-      )
-    let props = {
-      isFirst,
-      prevPage,
-      numPages,
-      blogSlug,
-      currentPage,
-      isLast,
-      nextPage
-    }
-    
-    return (
-      <Layout className="blog-page">
-        <SEO
-          title={"Blog — Page " + currentPage + " of " + numPages}
-          description={"Stackrole base blog page " + currentPage + " of " + numPages }
-        />
-        <h1>Blog</h1>
-        <div className="grids col-1 sm-2 lg-3">
-          {posts}
-        </div>
-        <Pagination {...props} />
-      </Layout>
-    )
+  const emptyQuery = "";
+  const [state, setState] = useState({
+    filteredData: [],
+    query: emptyQuery,
+  });
+
+  const allPosts = postQuery.allMarkdownRemark.edges
+
+  const handleInputChange = e => {
+    const query = e.target.value;
+    const filteredData = allPosts.filter(post => {
+      const { description, title, tags } = post.node.frontmatter
+      return (
+        description.toLowerCase().includes(query.toLowerCase()) ||
+        title.toLowerCase().includes(query.toLowerCase()) ||
+        (tags && tags.join("").toLowerCase().includes(query.toLowerCase()))
+      );
+    });
+    setState({
+      query,
+      filteredData,
+    });
   }
+
+  const { filteredData, query } = state;
+  const hasSearchResults = filteredData && query !== emptyQuery;
+  const posts = hasSearchResults ? filteredData : allPosts;
+
+  return (
+    <Layout>
+      <SEO title="Blog List" />
+      <InputSearch>
+        <input
+          type="text"
+          aria-label="Search"
+          placeholder="Filtre aqui os posts..."
+          onChange={handleInputChange}
+        />
+        <span>{posts.length}</span>
+      </InputSearch>
+      <PostList>
+        <ul>
+          {posts.map(edge => (
+            <PostCard edge={edge} />
+          ))}
+        </ul>
+      </PostList>
+    </Layout>
+  )
 }
 
 export default BlogIndex

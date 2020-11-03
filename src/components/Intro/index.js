@@ -6,7 +6,7 @@ const Intro = () => (
     <h1>Olá sou Person<br></br>  Lorem ipsum dolor sit amet, consectetur.</h1>
     <p>
     Curabitur condimentum auctor lacus ac semper. Etiam efficitur tortor vestibulum enim facilisis pulvinar ut id mi. Pellentesque lobortis vel massa eget auctor. Etiam imperdiet dolor nec volutpat rhoncus. 
-    🌱
+    <span>🌱</span>
     </p>
   </S.Section>
 

@@ -35,6 +35,10 @@ html, body, div, span, applet, object, iframe,
     display: block;
   }
 
+  html{
+    background: var(--clr-dark);
+    min-heigth: 100vh;
+  }
 
   ol, ul {
     list-style: none;

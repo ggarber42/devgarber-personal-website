@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
+import { SectionWrapper } from "../styles/utils"
+import * as V from "../styles/variables"
 
 export const pageQuery = graphql`
   query AboutQuery($id: String!){
@@ -16,7 +18,7 @@ export const pageQuery = graphql`
     }
   }
 `
-const AboutPage = ({ data }) => {
+const Trabalhos = ({ data }) => {
 	const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, excerpt } = markdownRemark
 
@@ -26,12 +28,12 @@ const AboutPage = ({ data }) => {
 				title={frontmatter.title}
 				description={excerpt}
 			/>
-			<div className="wrapper">
+			<SectionWrapper>
 				<h1>{frontmatter.title}</h1>
 				<article dangerouslySetInnerHTML={{ __html: html }} />
-			</div>
+			</SectionWrapper>
 		</Layout>
 	)
 }
 
-export default AboutPage
+export default Trabalhos;

@@ -8,8 +8,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const blogList = path.resolve(`./src/templates/blog-list.js`)
 
   const result = await graphql(`
-    {
-      allMarkdownRemark(
+  {
+    allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
       ) {
         edges {
@@ -20,11 +20,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               template
               title
             }
+            
+          }
+          next{
+            fields{
+              slug
+            }
+            frontmatter{
+              title
+              date(locale: "pt-br", formatString: "DD MMM[,] YYYY")
+              slug
+            }
+          }
+          previous{
+            fields{
+              slug
+            }
+            frontmatter{
+              title
+              date(locale: "pt-br", formatString: "DD MMM[,] YYYY")
+              slug
+            }
           }
         }
       }
     }
   `)
+
 
   // Handle errors
   if (result.errors) {
@@ -37,9 +59,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   let blogPostsCount = 0
 
   posts.forEach((post, index) => {
-    const id = post.node.id
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
+    const id = post.node.id;
+    // const previous = index === posts.length - 1 ? null : posts[index + 1].node
+    // const next = index === 0 ? null : posts[index - 1].node
+    const previous = post.previous;
+    const next = post.next;
 
     createPage({
       path: post.node.frontmatter.slug,
@@ -51,6 +75,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         id,
         previous,
         next,
+        post
       },
     })
 

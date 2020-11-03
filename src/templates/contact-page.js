@@ -4,6 +4,9 @@ import {RiSendPlane2Line} from "react-icons/ri";
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
+import Newsletter from "../components/Newsletter"
+import { SectionWrapper } from "../styles/utils"
+import * as V from "../styles/variables"
 
 export const pageQuery = graphql`
   query ContactQuery($id: String!){
@@ -28,34 +31,18 @@ const Contact = ({data}) => {
   const { frontmatter, html } = markdownRemark
 
   return  (
-    <Layout className="contact-page">
+    <Layout>
       <SEO 
         title={frontmatter.title}
         description={frontmatter.title + " " + site.siteMetadata.title}
       />
-      <div className="wrapper">
-        <h1>{frontmatter.title}</h1>
-        <div className="description" dangerouslySetInnerHTML={{ __html: html }} />
-        <form className="contact-form" action="/thanks" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact" />
-          <p>
-            <label>Name<input type="text" name="name" required /></label>   
-          </p>
-          <p>
-            <label>Email<input type="email" name="email" required /></label>
-          </p>
-          <p>
-            <label>Subject<input type="text" name="subject" required /></label>   
-          </p>
-          <p>
-            <label>Message<textarea name="message" required ></textarea></label>
-          </p>
-          <p className="text-align-right">
-            <button className="button" type="submit">Send Message <span className="icon -right"><RiSendPlane2Line/></span></button>
-          </p>
-        </form>
-      </div>
-
+      <SectionWrapper>
+        <V.Card>
+          <h1>{frontmatter.title}</h1>
+          <div className="description" dangerouslySetInnerHTML={{ __html: html }} />
+        </V.Card>
+      </SectionWrapper>
+      <Newsletter />
     </Layout>
   )
 }

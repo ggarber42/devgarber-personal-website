@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 
+import PostCard from "../PostCard"
 import * as S from "./styled"
 
 const PostListHome = () => {
@@ -16,7 +16,7 @@ const PostListHome = () => {
           node {
             id
             frontmatter {
-              date(formatString: "MMMM DD, YYYY")
+              date(locale: "pt-br", formatString: "DD/MM/YYYY")
               slug
               title
               tags
@@ -31,14 +31,24 @@ const PostListHome = () => {
   const posts = postQuery.allMarkdownRemark.edges
 
   return (
-      <S.PostList>
-          {posts.map(edge => {
-      const { description, title, tags } = edge.node.frontmatter
-      console.log(title)
-      return <h3>{title}</h3>
-    })}
-      </S.PostList>
+  <S.PostList>
+    <h2>Últimos Posts</h2>
+    <ul>
+      {posts.map(edge => <PostCard edge={edge} />)}
+    </ul>
+    <S.PostAniLink
+            cover
+            direction="right"
+            bg="#fff"
+            duration={1}
+            to="/blog"
+            title="Ir para blog"
+    >
+      Leia Mais
+    </S.PostAniLink>
+    </S.PostList>
   )
+  
 }
 
 export default PostListHome
