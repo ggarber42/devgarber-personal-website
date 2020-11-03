@@ -1,15 +1,42 @@
-import React from "react";
-import * as S from './styled';
+import React from "react"
+import Typed from "react-typed"
+import Particles from "react-particles-js"
+
+import * as S from "./styled"
 
 const Intro = () => (
- <S.Section>
-    <h1>Olá sou Person<br></br>  Lorem ipsum dolor sit amet, consectetur.</h1>
-    <p>
-    Curabitur condimentum auctor lacus ac semper. Etiam efficitur tortor vestibulum enim facilisis pulvinar ut id mi. Pellentesque lobortis vel massa eget auctor. Etiam imperdiet dolor nec volutpat rhoncus. 
-    <span>🌱</span>
-    </p>
+  <S.Section>
+    <Particles
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+      }}
+      params={{
+        particles: {
+          color: {
+            value: "#000000",
+          },
+        },
+      }}
+    />
+    <h1>
+      <Typed
+        strings={["Bem vindo ao meu espaço na internet<br><br>"]}
+        typeSpeed={50}
+        showCursor={false}
+      />
+      <Typed
+        strings={[
+          "Aqui vocês podem ver alguns artigos, tutorias, e também meu trabalho",
+        ]}
+        startDelay={3000}
+        typeSpeed={50}
+      />
+    </h1>
   </S.Section>
-
 )
 
-export default Intro;
+export default Intro

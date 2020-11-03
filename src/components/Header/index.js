@@ -19,8 +19,8 @@ const Header = props => {
       <div className="logo">
         <AniLink
             cover
-            direction="left"
-            bg="#fff"
+            direction="right"
+            bg="var(--clr-dark)"
             duration={1}
             to="/"
             title="Voltar para home">LOGO</AniLink>
