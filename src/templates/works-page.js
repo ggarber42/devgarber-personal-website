@@ -4,10 +4,9 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import { SectionWrapper } from "../styles/utils"
-import * as V from "../styles/variables"
 
 export const pageQuery = graphql`
-  query AboutQuery($id: String!){
+  query WorksQuery($id: String!){
 		markdownRemark(id: { eq: $id }) {
       id
 			html
@@ -18,7 +17,7 @@ export const pageQuery = graphql`
     }
   }
 `
-const Trabalhos = ({ data }) => {
+const Works = ({ data }) => {
 	const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, excerpt } = markdownRemark
 
@@ -36,4 +35,4 @@ const Trabalhos = ({ data }) => {
 	)
 }
 
-export default Trabalhos;
+export default Works;
