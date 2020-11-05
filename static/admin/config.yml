@@ -87,7 +87,7 @@ collections:
         - {label: "Body", name: "body", widget: "markdown"}
       - label: "Works"
         name: "works"
-        file: "src/content/pages/work"
+        file: "src/content/pages/works.md"
         fields:
           - {label: Main, name: main, widget: object, fields: [{label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
   - name: settings
