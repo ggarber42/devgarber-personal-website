@@ -21,6 +21,8 @@ const Works = ({ data }) => {
 	const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, excerpt } = markdownRemark
 
+	console.log(data);
+
 	return (
 		<Layout className="page">
 			<SEO
