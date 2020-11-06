@@ -9,47 +9,8 @@ const netlifyCmsPaths = {
     cmsConfig: `/static/admin/config.yml`,
   },
 }
-const settings = require("./src/util/site.json");
-// const feeds = [
-//   {
-//     serialize: ({ query: { site, allMarkdownRemark } }) => {
-//       return allMarkdownRemark.edges.map(edge => {
-//         const postUrl = path.join(site.siteMetadata.siteUrl, edge.node.fields.slug)
-//         return Object.assign({}, edge.node.frontmatter, {
-//           description: edge.node.frontmatter.description,
-//           date: edge.node.frontmatter.date,
-//           url: postUrl,
-//           guid: postUrl,
-//           custom_elements: [{ 'content:encoded': edge.node.html }]
-//         })
-//       })
-//     },
-//     query: `
-//       {
-//         allMarkdownRemark(
-//           sort: {order: DESC, fields: [frontmatter___date]}
-//           filter:  { fileAbsolutePath: {regex : "\/posts/"} }
-//           ) {
-//           edges {
-//             node {
-//               fields {
-//                 slug
-//               }
-//               frontmatter {
-//                 title
-//                 description
-//                 date
-//               }
-//               excerpt(truncate: true, pruneLength: 500, format: HTML)
-//             }
-//           }
-//         }
-//       }
-//     `,
-//     output: '/feed.xml',
-//     title: 'Guilherme Garber - RSS Feed'
-//   }
-// ]
+
+const settings = require("./src/util/site.json")
 
 module.exports = {
   siteMetadata: settings.meta,
@@ -131,23 +92,5 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-transition-link`,
     `gatsby-plugin-smoothscroll`,
-    // {
-    //   resolve: `gatsby-plugin-feed`,
-    //   options: {
-    //     query: `
-    //       {
-    //         site {
-    //           siteMetadata {
-    //             title
-    //             description
-    //             siteUrl
-    //             site_url: siteUrl
-    //           }
-    //         }
-    //       }
-    //     `,
-    //     feeds
-    //   }
-    // },
   ],
 }
