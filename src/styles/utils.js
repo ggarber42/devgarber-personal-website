@@ -101,9 +101,17 @@ export const BlogMain = styled.article`
         width: 80%;
         padding: 0 1em;
     `}
+    ${media.lessThan("750px")`
+        hr {
+          margin: 1em 0;
+        }
+  `}
   ${media.lessThan("700px")`
         padding: 0 1em;
         width: 90%;
+        hr {
+          margin: 1em 0;
+        }
     `}
 `
 export const PostNavLinkCard = styled(V.Card)`
