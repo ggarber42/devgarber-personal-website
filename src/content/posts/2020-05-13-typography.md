@@ -6,6 +6,7 @@ slug: /typography
 featuredImage: /assets/alexander-andrews-zw07kvdahpw-unsplash.jpg
 tags: ["css", "js"]
 description: metaphorically make a deal with the devil
+blogPost: true
 ---
 \# When will that be?\
 \

@@ -14,7 +14,7 @@ export const PostAniLink = styled(AniLink)`
   }
 `
 
-export const InputSearch = styled(V.Card)`
+export const CardDiv2 = styled(V.Card)`
   h2,
   h3 {
     display: inline-block;

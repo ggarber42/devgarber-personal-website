@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import SEO from "../components/seo"
 import Layout from "../components/Layout"
 import PostCard from "../components/PostCard"
-import { InputSearch, PostList, Heading } from "../styles/utils"
+import { CardDiv2, PostList, Heading } from "../styles/utils"
 import * as V from "../styles/variables"
 
 const BlogIndex = () => {
@@ -62,7 +62,7 @@ const BlogIndex = () => {
   return (
     <Layout>
       <SEO title="Blog List" />
-      <InputSearch>
+      <CardDiv2>
         <input
           type="text"
           aria-label="Search"
@@ -70,7 +70,7 @@ const BlogIndex = () => {
           onChange={handleInputChange}
         />
         <span>{posts.length}</span>
-      </InputSearch>
+      </CardDiv2>
       <PostList>
         <ul>
           {posts.map(edge => (

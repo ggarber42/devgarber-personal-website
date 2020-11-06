@@ -5,7 +5,7 @@ import {RiSendPlane2Line} from "react-icons/ri";
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Newsletter from "../components/Newsletter"
-import { SectionWrapper } from "../styles/utils"
+import { SectionWrapper, CardDiv2 } from "../styles/utils"
 import * as V from "../styles/variables"
 
 export const pageQuery = graphql`
@@ -37,10 +37,10 @@ const Contact = ({data}) => {
         description={frontmatter.title + " " + site.siteMetadata.title}
       />
       <SectionWrapper>
-        <V.Card>
+        <CardDiv2>
           <h1>{frontmatter.title}</h1>
           <div className="description" dangerouslySetInnerHTML={{ __html: html }} />
-        </V.Card>
+        </CardDiv2>
       </SectionWrapper>
       <Newsletter />
     </Layout>
