@@ -10,7 +10,6 @@ const netlifyCmsPaths = {
   },
 }
 const settings = require("./src/util/site.json");
-
 // const feeds = [
 //   {
 //     serialize: ({ query: { site, allMarkdownRemark } }) => {
