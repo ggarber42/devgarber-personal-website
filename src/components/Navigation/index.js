@@ -10,10 +10,10 @@ const MenuItems = [
     path: "/blog",
     title: "Blog",
   },
-  {
-    path: "/about",
-    title: "About",
-  },
+  // {
+  //   path: "/works",
+  //   title: "Works",
+  // },
   {
     path: "/contato",
     title: "Contato",
