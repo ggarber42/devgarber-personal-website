@@ -39,9 +39,7 @@ const Post = ({ data, pageContext }) => {
 
   const { markdownRemark } = data;
   const { frontmatter, html, excerpt } = markdownRemark;
-  const Image = frontmatter.featuredImage
-    ? frontmatter.featuredImage.childImageSharp.fluid
-    : "";
+
   const { previous, next} = pageContext;
 
   return(

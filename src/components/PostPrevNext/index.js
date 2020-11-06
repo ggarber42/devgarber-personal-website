@@ -4,9 +4,11 @@ import * as S from "./styled"
 import PrevNextLink from "../PrevNextLink"
 
 const PostPrevNext = ({ next, previous }) => {
+  console.log('next',next);
+  console.log('previous',previous);
   return (
     <S.PostNavSection>
-      {next ? (
+      {next && /posts+/.test(next.fields.slug) ? (
         <div className="post-nav-link next-link">
           <PrevNextLink
             description={"Anterior"}
@@ -17,7 +19,7 @@ const PostPrevNext = ({ next, previous }) => {
       ) : (
         ""
       )}
-      {previous ? (
+      {previous && /posts+/.test(previous.fields.slug) ? (
         <div className="post-nav-link previous-link">
           <PrevNextLink
             description={"Próximo"}
