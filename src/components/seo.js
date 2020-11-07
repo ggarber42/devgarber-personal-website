@@ -25,7 +25,7 @@ const SEO = ({ title, description, image, article }) => {
   }
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+    <Helmet title={`${seo.title} | ${defaultTitle}`} titleTemplate={titleTemplate}>
       <html lang="en-US"/>
       <link rel="alternate" href={seo.url} hreflang="en-us" />
       <link rel="alternate" href={seo.url} hreflang="en" />
@@ -78,16 +78,28 @@ SEO.defaultProps = {
   article: false,
 }
 
+// const query = graphql`
+//   query SEO {
+//     site {
+//       siteMetadata {
+//         defaultTitle: title
+//         titleTemplate
+//         defaultDescription: description
+//         siteUrl: siteUrl
+//         defaultImage: image
+//         twitterUsername
+//       }
+//     }
+//   }
+// `
+
 const query = graphql`
   query SEO {
     site {
       siteMetadata {
         defaultTitle: title
-        titleTemplate
         defaultDescription: description
         siteUrl: siteUrl
-        defaultImage: image
-        twitterUsername
       }
     }
   }

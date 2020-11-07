@@ -52,7 +52,13 @@ const feeds = [
 const settings = require("./src/util/site.json")
 
 module.exports = {
-  siteMetadata: settings.meta,
+  siteMetadata: {
+    title: `DevGarber`,
+    author: `Guilherme Garber`,
+    position: "Front-end Developer",
+    description: `Meu pequeno espaço na internet em que tento compartilhar algo útil`,
+    siteUrl: `https://devgarber.me/`,
+  },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -135,16 +141,15 @@ module.exports = {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              siteUrl    
             }
           }
+        }
         `,
         feeds,
       },
