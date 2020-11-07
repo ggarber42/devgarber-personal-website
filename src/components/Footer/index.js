@@ -1,4 +1,7 @@
 import React from 'react'
+import { ImRss2 } from "react-icons/im"
+import { Link } from "gatsby"
+
 import * as S from './styled'
 
 function Footer(props) {
@@ -7,12 +10,17 @@ function Footer(props) {
 
     return (
         <S.Footer>
-            <section>
+            <S.SectionFeed>
+                <Link title="Abrir o feed" target="_blank" to="/feed.xml">
+                    <ImRss2 size={20} color="#fff"/>
+                </Link>
+            </S.SectionFeed>
+            <S.MadeBy>
                  <a target="_blank" href="https://www.gatsbyjs.com/">Gatsby.js</a> 
-            </section>
-            <section>
-             {getCurrentYear()} - Garber 
-            </section>
+                <section>
+                {getCurrentYear()} - Garber 
+                </section>
+            </S.MadeBy>
             {/* &#127279; */}
         </S.Footer>
     );

@@ -1,12 +1,26 @@
 import styled from 'styled-components';
 import * as V from '../../styles/variables';
 
+
 export const Footer = styled.footer`
+${V.Wrapper}
+background: var(--clr-dark);
+justify-content: center;
+flex-direction: column;
+
+`
+
+export const SectionFeed = styled.section`
+    margin: 0;
+    text-align: center;
+`
+
+export const MadeBy = styled.section`
     ${V.Wrapper}
     
     &{
         background: var(--clr-dark);
-        padding-top: 2em;
+        padding-top: 1em;
         padding-right: 0px;
         padding-left: 0px;
         color: var(--clr-lightest);
