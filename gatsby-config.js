@@ -14,15 +14,11 @@ const feeds = [
   {
     serialize: ({ query: { site, allMarkdownRemark } }) => {
       return allMarkdownRemark.edges.map(edge => {
-        const postUrl = path.join(
-          site.siteMetadata.siteUrl,
-          edge.node.fields.slug
-        )
         return Object.assign({}, edge.node.frontmatter, {
-          description: edge.node.frontmatter.description,
+          description: edge.node.excerpt,
           date: edge.node.frontmatter.date,
-          url: postUrl,
-          guid: postUrl,
+          url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+          guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
           custom_elements: [{ "content:encoded": edge.node.html }],
         })
       })
