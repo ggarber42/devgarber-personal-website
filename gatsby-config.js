@@ -10,6 +10,49 @@ const netlifyCmsPaths = {
   },
 }
 
+const feeds = [
+  {
+    serialize: ({ query: { site, allMarkdownRemark } }) => {
+      return allMarkdownRemark.edges.map(edge => {
+        const postUrl = path.join(
+          site.siteMetadata.siteUrl,
+          edge.node.fields.slug
+        )
+        return Object.assign({}, edge.node.frontmatter, {
+          description: edge.node.frontmatter.description,
+          date: edge.node.frontmatter.date,
+          url: postUrl,
+          guid: postUrl,
+          custom_elements: [{ "content:encoded": edge.node.html }],
+        })
+      })
+    },
+    query: `
+    query MyQuery {
+      allMarkdownRemark(filter:  { fileAbsolutePath: {regex : "\/posts/"} }
+        sort: {order: DESC, fields: [frontmatter___date]}
+      ) {
+         edges {
+                node {
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                    description
+                    date
+                  }
+                  excerpt(truncate: true, pruneLength: 100, format: HTML)
+                }
+              }
+      }
+    }
+    `,
+    output: "/feed.xml",
+    title: "Guilherme Garber - RSS Feed",
+  },
+]
+
 const settings = require("./src/util/site.json")
 
 module.exports = {
@@ -88,9 +131,27 @@ module.exports = {
         icon: "static" + settings.meta.iconimage,
       },
     },
-    'gatsby-plugin-offline',
+    "gatsby-plugin-offline",
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-transition-link`,
     `gatsby-plugin-smoothscroll`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds,
+      },
+    },
   ],
 }
