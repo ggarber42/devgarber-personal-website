@@ -20,7 +20,7 @@ const Works = ({ data }) => {
 
 
 	return (
-		<Layout className="page">
+		<Layout className="page" >
 			<SEO
 				title={frontmatter.title}
 				description={excerpt}
