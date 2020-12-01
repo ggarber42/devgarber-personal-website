@@ -13,29 +13,45 @@ const Intro = () => (
         left: 0,
         width: "100%",
         height: "100%",
+        opacity: 0.2,
       }}
       params={{
         particles: {
-          color: {
-            value: "#000000",
+          number: {
+            value: window.innerWidth > 700 ? 200 : 100,
+          },
+          size: {
+            value: 3,
+          },
+        },
+        interactivity: {
+          events: {
+            onhover: {
+              enable: true,
+              mode: "repulse",
+            },
           },
         },
       }}
     />
-    <h1>
-      <Typed
-        strings={["Bem vindo ao meu espaço na internet<br><br>"]}
-        typeSpeed={50}
-        showCursor={false}
-      />
+    <S.StyledH1>
+      Bem vindo ao meu <span>pequeno</span> espaço na internet
+    </S.StyledH1>
+    <S.TypeWriterH2>
       <Typed
         strings={[
-          "Aqui vocês podem ver alguns artigos, tutorias, e também meu trabalho",
+          "Aqui falo",
+          "Aqui escrevo sobre",
+          "Aqui escrevo sobre<br><span style='color:var(--clr-accent);font-weight:900;'>Javascript</span>",
+          "Aqui escrevo sobre<br><span style='color:var(--clr-accent);font-weight:900;'>Python</span>",
+          "Aqui escrevo sobre<br><span style='color:var(--clr-accent);font-weight:900;'>PHP</span>",
+          "Aqui escrevo sobre<br><span style='color:var(--clr-accent);font-weight:900;'>tecnologias</span>",
         ]}
-        startDelay={3000}
-        typeSpeed={50}
+        typeSpeed={30}
+        backSpeed={40}
+        startDelay={100}
       />
-    </h1>
+    </S.TypeWriterH2>
   </S.Section>
 )
 
