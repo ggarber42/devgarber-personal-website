@@ -1,10 +1,21 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Typed from "react-typed"
 import Particles from "react-particles-js"
 
 import * as S from "./styled"
 
-const Intro = () => (
+const Intro = () => {
+
+  const [particleNumber, setParticleNumber] = useState(150);
+
+  useEffect(() => {
+    if(window.innerWidth < 800){
+      setParticleNumber(75);
+    }
+  }, []);
+
+
+  return(
   <S.Section>
     <Particles
       style={{
@@ -18,7 +29,7 @@ const Intro = () => (
       params={{
         particles: {
           number: {
-            value: 150,
+            value: particleNumber,
           },
           size: {
             value: 3,
@@ -53,6 +64,6 @@ const Intro = () => (
       />
     </S.TypeWriterH2>
   </S.Section>
-)
+)}
 
 export default Intro
