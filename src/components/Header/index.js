@@ -11,7 +11,7 @@ const Header = props => {
   const handleMenuClick = () =>{
       setTimeout(()=>{
         setIsOpen(!isOpen);
-      },100)
+      },100);
   }
 
   return (

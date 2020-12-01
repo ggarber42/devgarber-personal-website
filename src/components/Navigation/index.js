@@ -21,17 +21,17 @@ const MenuItems = [
 ]
 
 const ListLink = props => (
-  <li>
+  <li onClick={props.handleMenuClick}>
     <AniLink cover direction="left" bg="#fff" duration={1} to={props.to} title={`Ir para ${props.children}`}>
       {props.children}
     </AniLink>
   </li>
 )
 
-const Navigation = () => {
+const Navigation = ({handleMenuClick}) => {
  
   const listMenuItems = MenuItems.map((menuItem, index) => (
-    <ListLink key={index} to={menuItem.path}>
+    <ListLink key={index} to={menuItem.path} handleMenuClick={handleMenuClick}>
       {menuItem.title}
     </ListLink>
   ))

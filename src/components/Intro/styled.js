@@ -62,6 +62,6 @@ export const TypeWriterH2 = styled.h2`
     font-size: 1.8rem;
     `}
     ${media.lessThan('690px')`
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     `}
 `
