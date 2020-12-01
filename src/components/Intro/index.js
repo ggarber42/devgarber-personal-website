@@ -18,7 +18,7 @@ const Intro = () => (
       params={{
         particles: {
           number: {
-            value: window.innerWidth > 700 ? 200 : 100,
+            value: 150,
           },
           size: {
             value: 3,
