@@ -7,13 +7,13 @@ import * as S from "./styled"
 const Intro = () => {
 
   const [particleNumber, setParticleNumber] = useState(150);
-
   useEffect(() => {
     if(window.innerWidth < 800){
       setParticleNumber(35);
+    } else if (window.innerWidth < 800){
+      setParticleNumber(5);
     }
   }, []);
-
 
   return(
   <S.Section>

@@ -6,14 +6,9 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import { SectionWrapper } from "../styles/utils"
 
-
-
-
-
 const Works = ({ data }) => {
 	
 	console.log(data);
-
 	const { markdownRemark } = data // data.markdownRemark holds your post data
 	const { frontmatter, html, excerpt, main } = markdownRemark
 	const images = frontmatter.main.blurbs;

@@ -6,9 +6,13 @@ export const Header = styled.header`
     ${V.Wrapper}
     background: var(--clr-dark);  
     color: var(--clr-lightest);
+    align-items: center;
         .logo{
             display:block;
         }
+    }
+    .logo{
+      min-width: 50px;
     }
 `
 export const Nav = styled.nav`
