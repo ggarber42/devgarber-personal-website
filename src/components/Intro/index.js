@@ -6,14 +6,16 @@ import * as S from "./styled"
 
 const Intro = () => {
   const [showParticles, setShowParticle] = useState(true)
+  const [particlesNumber, setParticleNumbers] = useState(200)
   useEffect(() => {
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 1000 && window.innerWidth > 800) {
+      setParticleNumbers(75)
+    } else if (window.innerWidth < 800 && window.innerWidth > 700) {
+      setParticleNumbers(60)
+    } else if (window.innerWidth < 700) {
       setShowParticle(false)
-    } else {
-      setShowParticle(true)
-    }
+    } 
   }, [])
-
   return (
     <S.Section>
       {showParticles ? (
@@ -29,7 +31,7 @@ const Intro = () => {
           params={{
             particles: {
               number: {
-                value: 150,
+                value: particlesNumber,
               },
               size: {
                 value: 3,

@@ -50,7 +50,7 @@ export const StyledH1 = styled.h1`
     ${media.lessThan('690px')`
     font-size: 1.5rem;
     `}
-    ${media.lessThan('560px')`
+    ${media.lessThan('575px')`
     flex-direction: column;
     `}
 `
