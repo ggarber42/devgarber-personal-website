@@ -10,8 +10,8 @@ const Intro = () => {
   useEffect(() => {
     if(window.innerWidth < 800){
       setParticleNumber(35);
-    } else if (window.innerWidth < 800){
-      setParticleNumber(0);
+    } else if (window.innerWidth < 600){
+      setParticleNumber(1);
     }
   }, []);
 
