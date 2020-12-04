@@ -57,3 +57,7 @@ touch .eslintrc
   }
 }
 ```
+
+Referência
+
+https://leandroaps.medium.com/best-eslintrc-configuration-for-cra-for-now-81753cf39c19
