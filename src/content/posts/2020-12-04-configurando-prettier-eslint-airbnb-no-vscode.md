@@ -9,8 +9,6 @@ description: Como configurar eslint, prettier no estilo Airbnb dentro do VSCode
 ```terminal
 yarn create react-app hello-world
 
-npm install eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react prettier eslint-config-prettier eslint-plugin-prettier husky lint-staged eslint-plugin-compat --save-dev
-
 yarn add eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react prettier eslint-config-prettier eslint-plugin-prettier husky lint-staged eslint-plugin-compat --dev
 
 touch .eslintrc
