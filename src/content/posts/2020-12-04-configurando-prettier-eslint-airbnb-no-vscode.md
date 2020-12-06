@@ -1,10 +1,14 @@
 ---
 template: blog-post
-title: Configurando Prettier, ESLint, Airbnb no VSCode
+title: Configurando Prettier, ESLint, Airbnb para uma aplicação React no VSCode
 slug: /configurando-vscode
 date: 2020-12-03 23:27
-description: Como configurar eslint, prettier no estilo Airbnb dentro do VSCode
+description: eslint, prettier, airbnb, VSCode
 ---
+## Contexto
+
+Guias de estilo de código servem para dar uniformidade ao código (quando usar aspas simples e aspas duplas) e facilita o trabalho em equipe. No mundo Javascript, um guia de estilo muito utilizado é o do **airbnb**. Nesse _post_ irei mostrar como configurar o VSCode para utilizar esse guia num projeto *React*.
+
 
 ```terminal
 yarn create react-app hello-world
