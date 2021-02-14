@@ -54,18 +54,19 @@ const Intro = () => {
         Bem vindo ao meu <span>pequeno</span> espaço na internet
       </S.StyledH1>
       <S.TypeWriterH2>
+        Aqui escrevo
+      </S.TypeWriterH2>
+      <S.TypeWriterH2>
         <Typed
           strings={[
-            "Aqui falo",
-            "Aqui escrevo sobre",
-            "Aqui escrevo sobre<br><span style='color:var(--clr-accent);font-weight:900;'>Javascript</span>",
-            "Aqui escrevo sobre<br><span style='color:var(--clr-accent);font-weight:900;'>Python</span>",
-            "Aqui escrevo sobre<br><span style='color:var(--clr-accent);font-weight:900;'>PHP</span>",
-            "Aqui escrevo sobre<br><span style='color:var(--clr-accent);font-weight:900;'>tecnologias</span>",
+            "<span style='color:var(--clr-accent);font-weight:900;'>tutoriais</span>",
+            "<span style='color:var(--clr-accent);font-weight:900;'>post pythonicos</span>",
+            "<span style='color:var(--clr-accent);font-weight:900;'>trivialidades</span>",
           ]}
-          typeSpeed={30}
+          typeSpeed={20}
           backSpeed={40}
           startDelay={100}
+          loop={true}
         />
       </S.TypeWriterH2>
     </S.Section>
