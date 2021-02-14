@@ -2,6 +2,8 @@
 template: blog-post
 title: Configurando Prettier, ESLint, Airbnb para uma aplicação React no VSCode
 slug: /configurando-vscode
+tags:
+  - vscode
 date: 2020-12-03 23:27
 description: eslint, prettier, airbnb, VSCode
 ---
